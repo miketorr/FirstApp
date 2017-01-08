@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="empty.firstapp.MainActivity"
+    android:background="@android:color/holo_orange_light">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/mQname"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mNameField"
+        android:hint="Enter your name"
+        android:textAlignment="center"
+        android:background="@android:color/white"
+        android:textStyle="normal|italic"
+        android:textColor="@android:color/black"
+        android:maxLength="20"/>
+
+    <TextView
+        android:text="What is your name?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mQname"
+        android:layout_marginTop="60dp"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/white"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:text="START"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:id="@+id/mStartBut"
+
+        android:layout_below="@+id/mDayField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/mDayField"
+        android:hint="Example : Monday"
+        android:textAlignment="center"
+
+        android:layout_marginTop="103dp"
+        android:textStyle="normal|italic"
+        android:textColor="@android:color/black"
+        android:background="@android:color/white"
+        android:layout_below="@+id/mNameField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:text="Enter a day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginBottom="19dp"
+        android:textSize="28sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:background="@android:color/white"
+        android:layout_alignBottom="@+id/mDayField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+</RelativeLayout>

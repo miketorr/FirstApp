@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>ChooseColour.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+ChooseColour.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">empty.firstapp; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Color; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+</span><span class="s0">import </span><span class="s1">java.util.logging.Handler; 
+ 
+</span><span class="s0">import </span><span class="s1">empty.firstapp.model.rText; 
+ 
+</span><span class="s0">import static </span><span class="s1">android.R.attr.duration; 
+</span><span class="s0">import static </span><span class="s1">empty.firstapp.R.id.text; 
+ 
+</span><span class="s0">public class </span><span class="s1">ChooseColour </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+ 
+    </span><span class="s0">private </span><span class="s1">Button red; 
+    </span><span class="s0">private </span><span class="s1">Button green; 
+    </span><span class="s0">private </span><span class="s1">Button blue; 
+    </span><span class="s0">private </span><span class="s1">Button fin; 
+    </span><span class="s0">private </span><span class="s1">String name; 
+    </span><span class="s0">private </span><span class="s1">String day; 
+    </span><span class="s0">private </span><span class="s1">TextView toptext; 
+    </span><span class="s0">private </span><span class="s1">Random r = </span><span class="s0">new </span><span class="s1">Random(); 
+    </span><span class="s0">private </span><span class="s1">rText ran = </span><span class="s0">new </span><span class="s1">rText(); 
+ 
+ 
+    </span><span class="s0">public </span><span class="s1">ChooseColour() { 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_choose_colour); 
+ 
+        Intent i = getIntent(); 
+        name = i.getStringExtra(</span><span class="s2">&quot;name&quot;</span><span class="s1">); 
+        day = i.getStringExtra(</span><span class="s2">&quot;day&quot;</span><span class="s1">).toLowerCase(); 
+ 
+        </span><span class="s0">if </span><span class="s1">(name == </span><span class="s0">null </span><span class="s1">|| name.isEmpty()) { 
+            name = </span><span class="s2">&quot;Friend&quot;</span><span class="s1">; 
+        } 
+ 
+ 
+ 
+        </span><span class="s3">//assign variables to the layout - buttons, text fields from their ids</span><span class="s1"> 
+        toptext = (TextView) findViewById(R.id.mNameSpace); 
+        toptext.setText(</span><span class="s2">&quot;Hello, &quot;</span><span class="s1">+ name); 
+        red = (Button) findViewById(R.id.button); 
+        green = (Button) findViewById(R.id.button2); 
+        blue = (Button) findViewById(R.id.button3); 
+        fin = (Button) findViewById(R.id.mFinish); 
+ 
+        </span><span class="s3">//create a loadPage method, for next actionlistner on button and create</span><span class="s1"> 
+        livePage(); 
+ 
+ 
+ 
+    } 
+ 
+ 
+    </span><span class="s0">private void </span><span class="s1">livePage() { 
+ 
+        toToast(day); 
+ 
+        red.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                findViewById(R.id.mNeedToChange).setBackgroundColor(Color.RED); 
+                toptext.setText(name+</span><span class="s2">&quot; &quot;</span><span class="s1">+ranText()); 
+                livePage(); 
+            } 
+        }); 
+        green.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                findViewById(R.id.mNeedToChange).setBackgroundColor(Color.GREEN); 
+                toptext.setText(name+</span><span class="s2">&quot; &quot;</span><span class="s1">+ranText()); 
+                livePage(); 
+            } 
+        }); 
+        blue.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                findViewById(R.id.mNeedToChange).setBackgroundColor(Color.BLUE); 
+                toptext.setText(name+</span><span class="s2">&quot; &quot;</span><span class="s1">+ranText()); 
+                livePage(); 
+            } 
+        }); 
+        fin.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                finish(); 
+            } 
+        }); 
+ 
+ 
+ 
+ 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">toToast(String d) { 
+        </span><span class="s0">if </span><span class="s1">(day.matches(</span><span class="s2">&quot;(mon|tues|wednes|thurs|fri|)day&quot;</span><span class="s1">)) { 
+            Toast.makeText(ChooseColour.</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;The day you entered is a weekday.&quot;</span><span class="s1">, Toast.LENGTH_SHORT).show(); 
+        } </span><span class="s0">else if </span><span class="s1">(day.matches(</span><span class="s2">&quot;(satur|sun|)day&quot;</span><span class="s1">)) { 
+            Toast.makeText(ChooseColour.</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;The day you entered falls on the weekend.&quot;</span><span class="s1">, Toast.LENGTH_SHORT).show(); 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            Toast.makeText(ChooseColour.</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;You did not enter a valid day. TOOOOOOOAAAAAAAST TEST&quot;</span><span class="s1">, Toast.LENGTH_SHORT).show(); 
+        } 
+    } 
+ 
+    </span><span class="s0">public </span><span class="s1">String ranText() { 
+        </span><span class="s0">int </span><span class="s1">i = r.nextInt(</span><span class="s4">10</span><span class="s1">); 
+        </span><span class="s0">return </span><span class="s1">ran.getList().get(i); 
+ 
+    } 
+ 
+ 
+ 
+ 
+    </span><span class="s3">// copied to make toast reaapear  on repeated interval</span><span class="s1"> 
+ 
+ 
+ 
+    </span><span class="s3">// was trying to use string resources and pick a random string from there. I DONT KNOW HOW TO DO THAT so just create a new class next time</span><span class="s1"> 
+ 
+ 
+ 
+} 
+</span></pre>
+</body>
+</html>
